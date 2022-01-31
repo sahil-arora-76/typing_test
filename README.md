@@ -2,7 +2,7 @@
 g++ typing_test.cpp  
 
 # TRAINING MODE
-executable.exe --TRAINING 
+executable.exe --train
 
 
 only works in windows
