@@ -57,18 +57,15 @@ ttime get_typing_ttime(ttime *st, ttime *et) {
 
 void typing(string para) {
 	int i = 0, wrong = 0, correct = 0, total = para.size(), WPM = 0, seconds = 0, minutes = 0, j = 0;
-	ttime st, et, tt;  
+	ttime st = get_ttime(), et = get_ttime(), tt;  
 	clearscr(para);
-	st = get_ttime(); 
-	et = get_ttime(); 
 	tt = get_typing_ttime(&st, &et); 
 	while ((i < para.size() && train) || (tt.seconds < 60 && !train)) {
 		if (!train && para.size() - j <= 14) {
 			string temp = m_para[(rand() % 5) + 1]; 
 			para.append("_");
 			para.append(format(temp)); 
-			total += temp.size();
-			total++;  
+			total += temp.size() + 1;
 		} 
 		char c = getch();
 		et = get_ttime(); 
@@ -83,18 +80,15 @@ void typing(string para) {
 		wrong++, j++;
 	}
 	if (train) {
-		cout << "time taken to finish is = " << tt.seconds << "sec" << endl;   
-		cout << "correct characters typed = " << correct << " wrong characters typed = " << wrong <<  endl;
+		cout << "time taken to finish is = " << tt.seconds << "sec\n" << "correct characters typed = " << correct << " wrong characters typed = " << wrong <<  endl;
 	} else {
-		WPM = correct / 5; 
-		cout << "correct character typed = " << correct << " wrong character typed = " << wrong  << " WPM = " << WPM << '%' <<  endl;
+		cout << "correct character typed = " << correct << " wrong character typed = " << wrong  << " WPM = " << correct / 5 << '%' <<  endl;
 	}
 }
 
-
 void e_key(string para) {
 	clearscr(para);
-	cout << "\n\n\n\nPress ENTER key to continue\nNOTE -: insert space insert of _\nPress ctrl + c to exit" << endl;  
+	cout << "\n\n\n\nPress ENTER key to continue\nNOTE -: insert space instead of _\nPress ctrl + c to exit" << endl;  
 	char c = getche();
 	while (c != '\n') { c = getchar(); };  
 	clearscr(para);
@@ -114,10 +108,8 @@ int options() {
 	return opt;
 }
 
-
-
 int main(int argc, char **argv) {
-	if (argc >= 2 && strcmp(argv[1],"--train") == 0) {
+	if (argc >= 2 && strcmp(argv[1], "--train") == 0) {
 		train = true; 
 	}
 	string para; 
