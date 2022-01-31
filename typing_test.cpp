@@ -94,7 +94,7 @@ void typing(string para) {
 
 void e_key(string para) {
 	clearscr(para);
-	cout << "\n\n\n\nPress ENTER key to continue\nNOTE -: insert space insert of _" << endl;  
+	cout << "\n\n\n\nPress ENTER key to continue\nNOTE -: insert space insert of _\nPress ctrl + c to exit" << endl;  
 	char c = getche();
 	while (c != '\n') { c = getchar(); };  
 	clearscr(para);
