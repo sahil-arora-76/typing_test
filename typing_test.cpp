@@ -133,4 +133,4 @@ int main(int argc, char **argv) {
 	para = format(paragraph); 
 
 	e_key(para);
-}	
+}
